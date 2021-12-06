@@ -8,17 +8,17 @@ public class WordFrequencyGame {
 
     public static final String SPACE_PATTERN = "\\s+";
 
-    public String getResult(String inputStr){
+    public String getResult(String sentence){
 
 
-        if (isSingleWord(inputStr)) {
-            return inputStr + " 1";
+        if (isSingleWord(sentence)) {
+            return sentence + " 1";
         } else {
 
             try {
 
                 //split the input string with 1 to n pieces of spaces
-                String[] splitString = inputStr.split("\\s+");
+                String[] splitString = sentence.split(SPACE_PATTERN);
 
                 List<WordInfo> wordInfoList = new ArrayList<>();
                 for (String word : splitString) {
