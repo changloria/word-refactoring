@@ -5,10 +5,13 @@ import java.util.Map;
 import java.util.StringJoiner;
 
 public class WordFrequencyGame {
+
+    public static final String SPACE_PATTERN = "\\s+";
+
     public String getResult(String inputStr){
 
 
-        if (inputStr.split("\\s+").length==1) {
+        if (isSingleWord(inputStr)) {
             return inputStr + " 1";
         } else {
 
@@ -69,5 +72,9 @@ public class WordFrequencyGame {
         return map;
     }
 
+    private boolean isSingleWord(String sentence) {
+        return sentence.split(SPACE_PATTERN).length==1;
+    }
+    
 
 }
