@@ -15,10 +15,10 @@ public class WordFrequencyGame {
             try {
 
                 //split the input string with 1 to n pieces of spaces
-                String[] arr = inputStr.split("\\s+");
+                String[] splitString = inputStr.split("\\s+");
 
                 List<WordInfo> wordInfoList = new ArrayList<>();
-                for (String s : arr) {
+                for (String s : splitString) {
                     WordInfo wordInfo = new WordInfo(s, 1);
                     wordInfoList.add(wordInfo);
                 }
