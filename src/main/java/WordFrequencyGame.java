@@ -18,8 +18,8 @@ public class WordFrequencyGame {
                 String[] splitString = inputStr.split("\\s+");
 
                 List<WordInfo> wordInfoList = new ArrayList<>();
-                for (String s : splitString) {
-                    WordInfo wordInfo = new WordInfo(s, 1);
+                for (String word : splitString) {
+                    WordInfo wordInfo = new WordInfo(word, 1);
                     wordInfoList.add(wordInfo);
                 }
 
