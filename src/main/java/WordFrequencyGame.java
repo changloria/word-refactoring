@@ -21,15 +21,10 @@ public class WordFrequencyGame {
     private List<WordInfo> getWordFrequency(String sentence) {
         List<String> words = Arrays.asList(sentence.split(SPACE_PATTERN));
         List<String> distinctWords = words.stream().distinct().collect(Collectors.toList());
-        List<WordInfo> wordInfos = new ArrayList<>();
-        distinctWords.forEach(distinctWord ->{
-            int frequency = (int) words.stream()
-                                        .filter(word -> word.equals((distinctWord)))
-                                        .count();
-            WordInfo wordInfo = new WordInfo(distinctWord, frequency);
-            wordInfos.add(wordInfo);
-        });
-        return wordInfos;
+
+        return distinctWords.stream()
+                .map(word -> new WordInfo(word, Collections.frequency(words, word)))
+                .collect(Collectors.toList());
     }
 
     private String joinWordtoSentence(List<WordInfo> wordInfoList) {
