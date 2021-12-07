@@ -1,18 +1,20 @@
-import java.lang.reflect.Array;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class WordFrequencyGame {
 
     public static final String SPACE_PATTERN = "\\s+";
+    public static final String CALCULATE_ERROR = "Calculate Error";
+    public static final String NEW_LINE = "\n";
 
     public String getResult(String sentence){
         try {
             List<WordInfo> wordInfoList = getWordInfoList(sentence);
             wordInfoList.sort((word1, word2) -> word2.getWordCount() - word1.getWordCount());
             return getString(wordInfoList);
-        } catch (Exception e) {
-            return "Calculate Error";
+        } catch (Exception CalculateErrorException) {
+            return CALCULATE_ERROR;
         }
     }
     private List<WordInfo> getWordInfoList(String sentence) {
@@ -24,13 +26,14 @@ public class WordFrequencyGame {
             WordInfo wordInfo = new WordInfo(distinctWord, frequency);
             wordInfos.add(wordInfo);
         });
+        //for each loop can change to .stream().map() -> to map new variable
         return wordInfos;
     }
 
     private String getString(List<WordInfo> wordInfoList) {
         return wordInfoList.stream()
                 .map(wordInfo -> String.format("%s %d", wordInfo.getValue(), wordInfo.getWordCount()))
-                .collect(Collectors.joining("\n"));
+                .collect(Collectors.joining(NEW_LINE));
     }
     
 

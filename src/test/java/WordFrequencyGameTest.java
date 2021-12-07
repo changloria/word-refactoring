@@ -64,10 +64,9 @@ public class WordFrequencyGameTest {
     @Test
     public void should_return_calculate_error_when_inputstr_is_null_given_inputStr_is_null() {
         //given
-        String inputStr = null;
         String expectResult = "Calculate Error";
         //when
         //then
-        validate_Input_words_process_to_expected_word(inputStr, expectResult);
+        validate_Input_words_process_to_expected_word(null, expectResult);
     }
 }
