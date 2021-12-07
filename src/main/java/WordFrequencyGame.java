@@ -8,10 +8,11 @@ public class WordFrequencyGame {
     public static final String CALCULATE_ERROR = "Calculate Error";
     public static final String NEW_LINE = "\n";
 
+    //public method should put at front, private method should put at back (priority la)
     public String getResult(String sentence){
         try {
             List<WordInfo> wordInfoList = getWordFrequency(sentence);
-            wordInfoList.sort((word1, word2) -> word2.getWordCount() - word1.getWordCount());
+            wordInfoList.sort(Comparator.comparingInt(WordInfo::getWordCount).reversed());
             return joinWordtoSentence(wordInfoList);
         } catch (Exception CalculateErrorException) {
             return CALCULATE_ERROR;
